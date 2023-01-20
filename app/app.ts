@@ -1,3 +1,5 @@
+/* @ts-nocheck */
+
 /*
 In NativeScript, the app.ts file is the entry point to your application.
 You can use this file to perform app-level initialization, but the primary
@@ -12,8 +14,7 @@ import { Application, Trace } from '@nativescript/core';
 
 Event.prototype.initCustomEvent = Event.prototype.initEvent;
 globalRegister(global);
-registerElement('CollectionView', CollectionView);
-// registerElement('ContentView', ContentView);
+registerElement('CollectionView', makeListView(CollectionView, {force: true}));
 registerDOMElement('dummy');
 
 aliasTagName((tag) => tag.toLowerCase());
