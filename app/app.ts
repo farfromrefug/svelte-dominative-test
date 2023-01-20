@@ -6,9 +6,9 @@ purpose of the file is to pass control to the app’s first module.
 
 import { ContentView, aliasTagName, globalRegister, makeListView, registerDOMElement, registerElement } from 'dominative';
 import App from './App.svelte';
-import { CollectionView } from '@nativescript-community/ui-collectionview';
+import { CollectionView, CollectionViewTraceCategory } from '@nativescript-community/ui-collectionview';
 import { Event } from 'undom-ng';
-import { Application } from '@nativescript/core';
+import { Application, Trace } from '@nativescript/core';
 
 Event.prototype.initCustomEvent = Event.prototype.initEvent;
 globalRegister(global);
@@ -17,6 +17,9 @@ registerElement('CollectionView', CollectionView);
 registerDOMElement('dummy');
 
 aliasTagName((tag) => tag.toLowerCase());
+
+Trace.addCategories(CollectionViewTraceCategory);
+Trace.enable();
 
 //@ts-ignore
 
