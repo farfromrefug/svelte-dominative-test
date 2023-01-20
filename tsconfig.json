@@ -1,0 +1,35 @@
+{
+    "compilerOptions": {
+        "target": "es2020",
+        "module": "esnext",
+        "moduleResolution": "node",
+        // "jsxFactory": "svelteDominative.JSX",
+        "declaration": false,
+        "removeComments": false,
+        "emitDecoratorMetadata": false,
+        "experimentalDecorators": true,
+        "sourceMap": true,
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
+        "allowUnreachableCode": false,
+        "allowSyntheticDefaultImports": true,
+        "allowUnusedLabels": false,
+        "noEmitHelpers": true,
+        "noEmitOnError": false,
+        "noImplicitAny": false,
+        "noImplicitReturns": false,
+        "noImplicitUseStrict": false,
+        "noFallthroughCasesInSwitch": true,
+        "resolveJsonModule": true,
+        "lib": ["esnext", "es2017", "dom"],
+        "types": ["node", "svelte", "svelte-native"],
+        "baseUrl": ".",
+        "paths": {
+            "~/*": ["app/*"]
+        },
+        "typeRoots": ["typings"],
+        "plugins": [{ "transform": "@nativescript/webpack/dist/transformers/NativeClass", "type": "raw" }]
+    },
+    "include": ["app/**/*", "typings"],
+    "exclude": ["node_modules", "platforms", "**/angular"]
+}
