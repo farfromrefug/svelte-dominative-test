@@ -70,16 +70,45 @@
 
 <page>
     <!-- <actionbar title="Simple Grid" /> -->
-    <gridlayout backgroundColor="red">
-        <collectionview {items} colWidth="50%" rowHeight="200" on:loadMoreItems={onLoadMoreItems}  backgroundColor="green">
-            <Template let:item>
-                <gridlayout rows="*, auto" backgroundColor={item.color} class="item">
-                    <stacklayout row="1">
-                        <label row="1" text={item.name} class="title" />
-                        <label row="1" text={item.color} class="subtitle" />
-                    </stacklayout>
-                </gridlayout>
-            </Template>
-        </collectionview>
+    <gridlayout rows="auto, *, auto, *">
+        <label row="0">Keyed</label>
+        <gridlayout row="1" backgroundColor="red">
+            <collectionview {items} colWidth="50%" rowHeight="200" on:loadMoreItems={onLoadMoreItems}  backgroundColor="blue" itemTemplateSelector="$index % 2 ? 'odd' : 'even'">
+                <arrayprop key="itemTemplates">
+                    <Template let:item let:index key="odd">
+                        <gridlayout rows="*, auto, auto" backgroundColor={item.color} class="item">
+                            <stacklayout row="1">
+                                <label>Odd {index}/{item.index}</label>
+                                <label row="1" text={item.name} class="title" />
+                                <label row="1" text={item.color} class="subtitle" />
+                            </stacklayout>
+                        </gridlayout>
+                    </Template>
+                    <Template let:item let:index key="even">
+                        <gridlayout rows="*, auto, auto" backgroundColor={item.color} class="item">
+                            <stacklayout row="1">
+                                <label>Even {index}/{item.index}</label>
+                                <label row="1" text={item.name} class="title" />
+                                <label row="1" text={item.color} class="subtitle" />
+                            </stacklayout>
+                        </gridlayout>
+                    </Template>
+                </arrayprop>
+            </collectionview>
+        </gridlayout>
+        <label row="2">NonKeyed, ListView</label>
+        <gridlayout row="3" backgroundColor="green">
+            <listview {items} on:loadMoreItems={onLoadMoreItems}  backgroundColor="blue">
+                <Template let:item let:index>
+                    <gridlayout rows="*, auto, auto" backgroundColor={item.color} class="item">
+                        <stacklayout row="1">
+                            <label>{index}/{item.index}</label>
+                            <label row="1" text={item.name} class="title" />
+                            <label row="1" text={item.color} class="subtitle" />
+                        </stacklayout>
+                    </gridlayout>
+                </Template>
+            </listview>
+        </gridlayout>
     </gridlayout>
 </page>
