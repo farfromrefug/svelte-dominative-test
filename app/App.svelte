@@ -2,6 +2,7 @@
     import Template from './Template.svelte';
     import { ObservableArray } from '@nativescript/core';
     import { GC } from '@nativescript/core/utils';
+    import CustomComponent from './CustomComponent.svelte';
     let items = new ObservableArray([
         { index: 0, name: 'TURQUOISE', color: '#1abc9c' },
         { index: 1, name: 'EMERALD', color: '#2ecc71' },
@@ -70,35 +71,66 @@
 
 <page>
     <!-- <actionbar title="Simple Grid" /> -->
-    <gridlayout rows="auto, *, auto, *">
-        <label row="0">Keyed</label>
+    <!-- <gridlayout rows="auto, *, auto, *"> -->
+        <!-- <label row="0">Keyed</label> -->
         <gridlayout row="1" backgroundColor="red">
-            <collectionview {items} colWidth="50%" rowHeight="200" on:loadMoreItems={onLoadMoreItems}  backgroundColor="blue" itemTemplateSelector="$index % 2 ? 'odd' : 'even'">
+            <collectionview {items} colWidth="50%" rowHeight="200" on:loadMoreItems={onLoadMoreItems} backgroundColor="blue" itemTemplateSelector="$index % 2 ? 'odd' : 'even'">
                 <arrayprop key="itemTemplates">
                     <Template let:item let:index key="odd">
                         <gridlayout rows="*, auto, auto" backgroundColor={item.color} class="item">
-                            <stacklayout row="1">
-                                <label>Odd {index}/{item.index}</label>
-                                <label row="1" text={item.name} class="title" />
-                                <label row="1" text={item.color} class="subtitle" />
+                                <htmllabel text={`Odd ${item.index}`}/>
+                                <htmllabel text={`Odd ${item.index}`}/>
+                                <htmllabel text={`Odd ${item.index}`}/>
+                                <htmllabel text={`Odd ${item.index}`}/>
+                                <htmllabel text={`Odd ${item.index}`}/>
+                                <htmllabel text={`Odd ${item.index}`}/>
+                                <htmllabel text={`Odd ${item.index}`}/>
+                                <htmllabel text={`Odd ${item.index}`}/>
+                                <htmllabel text={`Odd ${item.index}`}/>
+                                <stacklayout row="1">
+                                    <htmllabel text={`Odd ${item.index}`}/>
+                                <htmllabel row="1" text={item.name} class="title" />
+                                <htmllabel row="1" text={item.color} class="subtitle" />
                             </stacklayout>
+                            <button text="button" />
+                                <button text="button" />
+                                <button text="button" />
+                                <button text="button" />
+                                <button text="button" />
+                                <button text="button" />
                         </gridlayout>
                     </Template>
                     <Template let:item let:index key="even">
                         <gridlayout rows="*, auto, auto" backgroundColor={item.color} class="item">
-                            <stacklayout row="1">
-                                <label>Even {index}/{item.index}</label>
-                                <label row="1" text={item.name} class="title" />
-                                <label row="1" text={item.color} class="subtitle" />
+                                <htmllabel text={`Even ${item.index}`}/>
+                                <htmllabel text={`Even ${item.index}`}/>
+                                <htmllabel text={`Even ${item.index}`}/>
+                                <htmllabel text={`Even ${item.index}`}/>
+                                <htmllabel text={`Even ${item.index}`}/>
+                                <htmllabel text={`Even ${item.index}`}/>
+                                <htmllabel text={`Even ${item.index}`}/>
+                                <htmllabel text={`Even ${item.index}`}/>
+                                <stacklayout row="1">
+                                    <htmllabel text={`Even ${item.index}`}/>
+
+                                <htmllabel row="1" text={item.name} class="title" />
+                                <htmllabel row="1" text={item.color} class="subtitle" />
                             </stacklayout>
+                            <button text="button" />
+                                <button text="button" />
+                                <button text="button" />
+                                <button text="button" />
+                                <button text="button" />
+                                <button text="button" />
+                                <button text="button" />
                         </gridlayout>
                     </Template>
                 </arrayprop>
             </collectionview>
         </gridlayout>
-        <label row="2">NonKeyed, ListView</label>
+        <!-- <label row="2">NonKeyed, ListView</label>
         <gridlayout row="3" backgroundColor="green">
-            <listview {items} on:loadMoreItems={onLoadMoreItems}  backgroundColor="blue">
+            <listview {items} on:loadMoreItems={onLoadMoreItems} backgroundColor="blue">
                 <Template let:item let:index>
                     <gridlayout rows="*, auto, auto" backgroundColor={item.color} class="item">
                         <stacklayout row="1">
@@ -109,6 +141,6 @@
                     </gridlayout>
                 </Template>
             </listview>
-        </gridlayout>
-    </gridlayout>
+        </gridlayout> -->
+    <!-- </gridlayout> -->
 </page>

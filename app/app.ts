@@ -11,16 +11,18 @@ import App from './App.svelte';
 import { CollectionView, CollectionViewTraceCategory } from '@nativescript-community/ui-collectionview';
 import { Event } from 'undom-ng';
 import { Application, Trace } from '@nativescript/core';
+import { Label } from '@nativescript-community/ui-label';
 
 Event.prototype.initCustomEvent = Event.prototype.initEvent;
 globalRegister(global);
 registerElement('CollectionView', makeListView(CollectionView, {force: true}));
 registerDOMElement('dummy');
+registerElement('htmllabel', Label);
 
 aliasTagName((tag) => tag.toLowerCase());
 
-Trace.addCategories(CollectionViewTraceCategory);
-Trace.enable();
+// Trace.addCategories(CollectionViewTraceCategory);
+// Trace.enable();
 
 //@ts-ignore
 
