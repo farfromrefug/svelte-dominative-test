@@ -23,7 +23,8 @@
 		// for triggering update on the specific item only
 		// actually wrappers[view.__key] === view
 		wrappers[view.__key].__item = item
-		wrappers[view.__key].__index = index
+		view.__index = index
+		// wrappers[view.__key].__index = index
 	}
 </script>
 

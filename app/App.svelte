@@ -88,7 +88,7 @@
                                 <htmllabel text={`Odd ${item.index}`}/>
                                 <htmllabel text={`Odd ${item.index}`}/>
                                 <stacklayout row="1">
-                                    <htmllabel text={`Odd ${item.index}`}/>
+                                    <htmllabel text={`Odd ${index}`}/>
                                 <htmllabel row="1" text={item.name} class="title" />
                                 <htmllabel row="1" text={item.color} class="subtitle" />
                             </stacklayout>
@@ -111,8 +111,7 @@
                                 <htmllabel text={`Even ${item.index}`}/>
                                 <htmllabel text={`Even ${item.index}`}/>
                                 <stacklayout row="1">
-                                    <htmllabel text={`Even ${item.index}`}/>
-
+                                    <htmllabel text={`Even ${index}`}/>
                                 <htmllabel row="1" text={item.name} class="title" />
                                 <htmllabel row="1" text={item.color} class="subtitle" />
                             </stacklayout>
