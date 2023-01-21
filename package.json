@@ -12,7 +12,8 @@
         "access": "public"
     },
     "scripts": {
-        "run.android.timeline": "cross-var ns run android --config=nativescript.config.timeline --release --key-store-path $KEYSTORE_PATH --key-store-password $KEYSTORE_PASSWORD --key-store-alias $KEYSTORE_ALIAS --key-store-alias-password $KEYSTORE_ALIAS_PASSWORD --env.timeline"
+        "run.android.timeline": "cross-var ns run android --config=nativescript.config.timeline --release --key-store-path $KEYSTORE_PATH --key-store-password $KEYSTORE_PASSWORD --key-store-alias $KEYSTORE_ALIAS --key-store-alias-password $KEYSTORE_ALIAS_PASSWORD --env.timeline",
+        "run.android.production": "cross-var ns run android --release --key-store-path $KEYSTORE_PATH --key-store-password $KEYSTORE_PASSWORD --key-store-alias $KEYSTORE_ALIAS --key-store-alias-password $KEYSTORE_ALIAS_PASSWORD"
     },
     "files": [
         "app",

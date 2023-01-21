@@ -1,5 +1,5 @@
 module.exports = {
-    id: 'org.nativescript.dominativedemosvelte',
+    id: 'org.nativescript.sveltenativedemo',
     appPath: 'app',
     webpackConfigPath: 'app.webpack.config.js',
     appResourcesPath: 'App_Resources',

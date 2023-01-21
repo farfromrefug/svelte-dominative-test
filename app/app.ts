@@ -6,20 +6,16 @@ You can use this file to perform app-level initialization, but the primary
 purpose of the file is to pass control to the app’s first module.
 */
 
-import { ContentView, aliasTagName, globalRegister, makeListView, registerDOMElement, registerElement } from 'dominative';
 import App from './App.svelte';
 import { CollectionView, CollectionViewTraceCategory } from '@nativescript-community/ui-collectionview';
-import { Event } from 'undom-ng';
 import { Application, Trace } from '@nativescript/core';
 import { Label } from '@nativescript-community/ui-label';
+import CollectionViewElement from '@nativescript-community/ui-collectionview/svelte';
+import { registerNativeViewElement } from 'svelte-native/dom';
+import { svelteNative } from 'svelte-native';
+CollectionViewElement.register();
+registerNativeViewElement('htmllabel', () => Label as any, null, {}, { override: true });
 
-Event.prototype.initCustomEvent = Event.prototype.initEvent;
-globalRegister(global);
-registerElement('CollectionView', makeListView(CollectionView, {force: true}));
-registerDOMElement('dummy');
-registerElement('htmllabel', Label);
-
-aliasTagName((tag) => tag.toLowerCase());
 
 // Trace.addCategories(CollectionViewTraceCategory);
 // Trace.enable();
@@ -27,6 +23,4 @@ aliasTagName((tag) => tag.toLowerCase());
 //@ts-ignore
 
 //@ts-ignore
-const app = new App({ target: document });
-//@ts-ignore
-Application.run({ create: () => app.$$.root });
+svelteNative(App, {});

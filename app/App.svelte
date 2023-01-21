@@ -1,8 +1,8 @@
 <script lang="ts">
-    import Template from './Template.svelte';
     import { ObservableArray } from '@nativescript/core';
     import { GC } from '@nativescript/core/utils';
     import CustomComponent from './CustomComponent.svelte';
+    import {Template} from 'svelte-native/components';
     let items = new ObservableArray([
         { index: 0, name: 'TURQUOISE', color: '#1abc9c' },
         { index: 1, name: 'EMERALD', color: '#2ecc71' },
@@ -75,7 +75,6 @@
         <!-- <label row="0">Keyed</label> -->
         <gridlayout row="1" backgroundColor="red">
             <collectionview {items} colWidth="50%" rowHeight="200" on:loadMoreItems={onLoadMoreItems} backgroundColor="blue" itemTemplateSelector="$index % 2 ? 'odd' : 'even'">
-                <arrayprop key="itemTemplates">
                     <Template let:item let:index key="odd">
                         <gridlayout rows="*, auto, auto" backgroundColor={item.color} class="item">
                                 <htmllabel text={`Odd ${item.index}`}/>
@@ -125,7 +124,6 @@
                                 <button text="button" />
                         </gridlayout>
                     </Template>
-                </arrayprop>
             </collectionview>
         </gridlayout>
         <!-- <label row="2">NonKeyed, ListView</label>
