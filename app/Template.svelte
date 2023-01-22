@@ -1,10 +1,10 @@
 <script>
 	import { document as _document } from 'dominative'
-	import { tick } from 'svelte'
+	import { flush } from 'svelte'
 
 	import MakeImmutable from './MakeImmutable.svelte'
 
-	let wrappers = []
+	let wrapperViews = []
 
 	const createView = (event) => {
 		event.view = _document.createElement('ContentView')
@@ -13,27 +13,30 @@
 	const itemLoading = (event) => {
 		const {view, item, index} = event
 
-		if (!view.__inited) {
-			view.__inited = true
-			view.__key = wrappers.length
-			wrappers = [...wrappers, view]
-			tick().then(() => {
-				view.appendChild(view.__wrapper.firstElementChild)
-			})
+		if (view.__inited) {
+			wrapperViews[view.__key].__item = item
+			wrapperViews[view.__key].__index = index
+			flush()
+		} else {
+			view.__key = wrapperViews.length
+			view.__item = item
+			view.__index = index
+			wrapperViews = [...wrapperViews, view]
+			flush()
+			if (view.__wrapper.firstElementChild) {
+				const renderedView = view.__wrapper.firstElementChild
+				view.appendChild(renderedView)
+				view.__inited = true
+			}
 		}
-
-		// for triggering update on the specific item only
-		// actually wrappers[view.__key] === view
-		wrappers[view.__key].__item = item
-		wrappers[view.__key].__index = index
 	}
 </script>
 
 <itemtemplate on:createView={createView} on:itemLoading={itemLoading} {...$$props}>
 	<dummy>
-		{#each wrappers as wrapper, index (wrapper.__key)}
-		<dummy bind:this={wrappers[index].__wrapper}>
-			<MakeImmutable item={wrapper.__item} index={wrapper.__index} let:item let:index>
+		{#each wrapperViews as wrapperView, index (wrapperView.__key)}
+		<dummy bind:this={wrapperViews[index].__wrapper}>
+			<MakeImmutable item={wrapperView.__item} index={wrapperView.__index} let:item let:index>
 				<slot item={item} index={index}></slot>
 			</MakeImmutable>
 		</dummy>

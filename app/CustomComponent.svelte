@@ -1,13 +1,6 @@
 <script lang="ts">
-import { afterUpdate } from 'svelte'
-
-export let item;
-export let index;
-
-afterUpdate(() => {
-	console.log('update', item.index)
-})
-
+export let item
+export let index
 </script>
 
 <gridlayout rows="*, auto, auto" backgroundColor={item.color} class="item">
