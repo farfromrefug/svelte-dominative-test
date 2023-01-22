@@ -2,6 +2,8 @@
 	import { document as _document } from 'dominative'
 	import { tick } from 'svelte'
 
+	import MakeImmutable from './MakeImmutable.svelte'
+
 	let wrappers = []
 
 	const createView = (event) => {
@@ -23,8 +25,7 @@
 		// for triggering update on the specific item only
 		// actually wrappers[view.__key] === view
 		wrappers[view.__key].__item = item
-		view.__index = index
-		// wrappers[view.__key].__index = index
+		wrappers[view.__key].__index = index
 	}
 </script>
 
@@ -32,7 +33,9 @@
 	<dummy>
 		{#each wrappers as wrapper, index (wrapper.__key)}
 		<dummy bind:this={wrappers[index].__wrapper}>
-			<slot item={wrapper.__item} index={wrapper.__index}></slot>
+			<MakeImmutable item={wrapper.__item} index={wrapper.__index} let:item let:index>
+				<slot item={item} index={index}></slot>
+			</MakeImmutable>
 		</dummy>
 		{/each}
 	</dummy>
