@@ -1,0 +1,14 @@
+{
+    "terminal.integrated.env.linux": {
+        "KEYSTORE_PASSWORD": "nativescript",
+        "KEYSTORE_ALIAS": "nativescript",
+        "KEYSTORE_ALIAS_PASSWORD": "nativescript",
+        "KEYSTORE_PATH": "certs/upload.keystore"
+    },
+    "terminal.integrated.env.osx": {
+        "KEYSTORE_PASSWORD": "nativescript",
+        "KEYSTORE_ALIAS": "nativescript",
+        "KEYSTORE_ALIAS_PASSWORD": "nativescript",
+        "KEYSTORE_PATH": "certs/upload.keystore"
+    }
+}
