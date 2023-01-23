@@ -23,6 +23,5 @@ typings/
 package-lock.json
 
 # Visual Studio Code
-.vscode/*
 pnpm-lock.yaml
 *.html
