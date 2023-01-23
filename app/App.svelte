@@ -74,56 +74,10 @@
     <!-- <gridlayout rows="auto, *, auto, *"> -->
         <!-- <label row="0">Keyed</label> -->
         <gridlayout row="1" backgroundColor="red">
-            <collectionview {items} colWidth="50%" rowHeight="200" on:loadMoreItems={onLoadMoreItems} backgroundColor="blue" itemTemplateSelector="$index % 2 ? 'odd' : 'even'">
-                    <Template let:item let:index key="odd">
-                        <gridlayout rows="*, auto, auto" backgroundColor={item.color} class="item">
-                                <htmllabel text={`Odd ${item.index}`}/>
-                                <htmllabel text={`Odd ${item.index}`}/>
-                                <htmllabel text={`Odd ${item.index}`}/>
-                                <htmllabel text={`Odd ${item.index}`}/>
-                                <htmllabel text={`Odd ${item.index}`}/>
-                                <htmllabel text={`Odd ${item.index}`}/>
-                                <htmllabel text={`Odd ${item.index}`}/>
-                                <htmllabel text={`Odd ${item.index}`}/>
-                                <htmllabel text={`Odd ${item.index}`}/>
-                                <stacklayout row="1">
-                                    <htmllabel text={`Odd ${item.index}`}/>
-                                <htmllabel row="1" text={item.name} class="title" />
-                                <htmllabel row="1" text={item.color} class="subtitle" />
-                            </stacklayout>
-                            <button text="button" />
-                                <button text="button" />
-                                <button text="button" />
-                                <button text="button" />
-                                <button text="button" />
-                                <button text="button" />
-                        </gridlayout>
-                    </Template>
-                    <Template let:item let:index key="even">
-                        <gridlayout rows="*, auto, auto" backgroundColor={item.color} class="item">
-                                <htmllabel text={`Even ${item.index}`}/>
-                                <htmllabel text={`Even ${item.index}`}/>
-                                <htmllabel text={`Even ${item.index}`}/>
-                                <htmllabel text={`Even ${item.index}`}/>
-                                <htmllabel text={`Even ${item.index}`}/>
-                                <htmllabel text={`Even ${item.index}`}/>
-                                <htmllabel text={`Even ${item.index}`}/>
-                                <htmllabel text={`Even ${item.index}`}/>
-                                <stacklayout row="1">
-                                    <htmllabel text={`Even ${item.index}`}/>
-
-                                <htmllabel row="1" text={item.name} class="title" />
-                                <htmllabel row="1" text={item.color} class="subtitle" />
-                            </stacklayout>
-                            <button text="button" />
-                                <button text="button" />
-                                <button text="button" />
-                                <button text="button" />
-                                <button text="button" />
-                                <button text="button" />
-                                <button text="button" />
-                        </gridlayout>
-                    </Template>
+            <collectionview {items} colWidth="50%" rowHeight="200" on:loadMoreItems={onLoadMoreItems}>
+                <Template let:item let:index>
+                    <CustomComponent item={item} index={index}/>
+                </Template>
             </collectionview>
         </gridlayout>
         <!-- <label row="2">NonKeyed, ListView</label>
